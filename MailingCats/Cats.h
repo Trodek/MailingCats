@@ -19,7 +19,7 @@ std::string ToCat(std::string cat_text)
 		temp += "           )===(       *\n";
 		temp += "          /     \ .\n";
 		temp += "          |     | \n";
-		temp += "         /       \ .\n";
+		temp += "         /       \\ .\n";
 		temp += "         \\       / \n";
 		temp += "  _/\\_/\\_/\\__  _/_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_ \n";
 		temp += "  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |\n";
@@ -31,47 +31,47 @@ std::string ToCat(std::string cat_text)
 	else if (cat_text == "Cat")
 	{
 		temp = "                                 _\n";
-		temp += "                                | \\n";
+		temp += "                                | \\\n";
 		temp += "                                | |\n";
 		temp += "                                | |\n";
-		temp += "           |\                   | |\n";
-		temp += "          /, ~\                / /\n";
+		temp += "           |\\                   | |\n";
+		temp += "          /, ~\\                / /\n";
 		temp += "         X     `-.....-------./ /\n";
 		temp += "          ~-. ~  ~              |\n";
-		temp += "             \             /    |\n";
-		temp += "              \  /_     ___\   / \n";
-		temp += "              | /\ ~~~~~   \ | \n";
-		temp += "              | | \        || | \n";
-		temp += "              | |\ \       || )\n";
+		temp += "             \\             /    |\n";
+		temp += "              \\  /_     ___\\   / \n";
+		temp += "              | /\\ ~~~~~   \\ | \n";
+		temp += "              | | \\        || | \n";
+		temp += "              | |\\ \\       || )\n";
 		temp += "             (_/ (_/      ((_/ \n";
 	}
 	else if (cat_text == "SleepCat")
 	{
-		temp =  " |\__/,|   (`\ \n";
-		temp += " |_ _  |.--.) )\ \n";
+		temp =  " |\\__/,|   (`\\ \n";
+		temp += " |_ _  |.--.) )\\ \n";
 		temp += " ( T   )     / \n";
 		temp += " (((^_(((/(((_> \n";
 	}
 	else if (cat_text == "SmallCat")
 	{
-		temp = "      \    /\\n";
+		temp = "      \\    /\\\n";
 		temp += "       )  ( ')\n";
 		temp += "      (  /  ) \n";
-		temp += "       \(__)| \n";
+		temp += "       \\(__)| \n";
 	}
 	else if (cat_text == "LaCaja")
 	{
 		temp = "                                     ,\n";
-		temp += "              ,-.       _,---._ __  / \\n";
-		temp += "            /  )    .-'       `./ /   \\n";
+		temp += "              ,-.       _,---._ __  / \\\n";
+		temp += "            /  )    .-'       `./ /   \\\n";
 		temp += "            (  (   ,'            `/    /|\n";
-		temp += "             \  `-'             \'\   / |\n";
-		temp += "              `.              ,  \ \ /  |\n";
+		temp += "             \\  `-'             \\'\\   / |\n";
+		temp += "              `.              ,  \\ \\ /  |\n";
 		temp += "               /`.          ,'-`----Y   |\n";
 		temp += "              (            ;        |   '\n";
 		temp += "              |  ,-.    ,-'         |  / \n";
 		temp += "              |  | (   |            | / \n";
-		temp += "              )  |  \  `.___________|/  \n";
+		temp += "              )  |  \\  `.___________|/  \n";
 		temp += "              `--'   `--' \n";
 	}
 	else
@@ -115,7 +115,7 @@ void ProcessMessage(std::string& msg)
 		{
 			cat_found = true;
 			cat += ToCat("SmallCat");
-			msg.replace(msg.begin() + pos, msg.begin() + pos + 9, cat);
+			msg.replace(msg.begin() + pos, msg.begin() + pos + 10, cat);
 		}
 		else if ((pos = msg.find("[LaCaja]")) != std::string::npos)
 		{
