@@ -11,10 +11,10 @@ std::string ToCat(std::string cat_text)
 		temp += "                 MMMMUN&&&&&&&           \n";
 		temp += "     *           MMM8GATO&&&&&           \n";
 		temp += "                 MMM88&&&&&&&&           \n";
-		temp += "                 'MMM88&&&&&&'           \n";
-		temp += "                   'MMM8&&&'      *      \n";
+		temp += "                 ·MMM88&&&&&&·           \n";
+		temp += "                   ·MMM8&&&·      *      \n";
 		temp += "          |\___/|\n";
-		temp += "          )     (             .              '\n";
+		temp += "          )     (             .              ·\n";
 		temp += "         =\     /=\n";
 		temp += "           )===(       *\n";
 		temp += "          /     \ .\n";
@@ -55,7 +55,7 @@ std::string ToCat(std::string cat_text)
 	else if (cat_text == "SmallCat")
 	{
 		temp = "      \\    /\\\n";
-		temp += "       )  ( ')\n";
+		temp += "       )  ( ·)\n";
 		temp += "      (  /  ) \n";
 		temp += "       \\(__)| \n";
 	}
