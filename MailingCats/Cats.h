@@ -93,31 +93,31 @@ void ProcessMessage(std::string& msg)
 		std::string cat = "\n";
 
 		size_t pos;
-		if (pos = msg.find("[MoonCat]") != std::string::npos)
+		if ((pos = msg.find("[MoonCat]")) != std::string::npos)
 		{
 			cat_found = true;
 			cat += ToCat("MoonCat");
 			msg.replace(msg.begin()+pos, msg.begin()+pos+9, cat);
 		}
-		else if (pos = msg.find("[Cat]") != std::string::npos)
+		else if ((pos = msg.find("[Cat]")) != std::string::npos)
 		{
 			cat_found = true;
 			cat += ToCat("Cat");
 			msg.replace(msg.begin() + pos, msg.begin() + pos + 5, cat);
 		}
-		else if (pos = msg.find("[SleepCat]") != std::string::npos)
+		else if ((pos = msg.find("[SleepCat]")) != std::string::npos)
 		{
 			cat_found = true;
 			cat += ToCat("SleepCat");
 			msg.replace(msg.begin() + pos, msg.begin() + pos + 10, cat);
 		}
-		else if (pos = msg.find("[SmallCat]") != std::string::npos)
+		else if ((pos = msg.find("[SmallCat]")) != std::string::npos)
 		{
 			cat_found = true;
 			cat += ToCat("SmallCat");
 			msg.replace(msg.begin() + pos, msg.begin() + pos + 9, cat);
 		}
-		else if (pos = msg.find("[LaCaja]") != std::string::npos)
+		else if ((pos = msg.find("[LaCaja]")) != std::string::npos)
 		{
 			cat_found = true;
 			cat += ToCat("LaCaja");
