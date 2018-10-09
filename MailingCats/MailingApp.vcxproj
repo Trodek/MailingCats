@@ -136,6 +136,7 @@
     <ClCompile Include="src\SocketUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cats.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\database\DatabaseTypes.h" />
     <ClInclude Include="src\database\DBConnection.h" />
