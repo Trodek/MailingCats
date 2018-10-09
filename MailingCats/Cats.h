@@ -17,11 +17,11 @@ std::string ToCat(std::string cat_text)
 		temp += "          )     (             .              '\n";
 		temp += "         =\     /=\n";
 		temp += "           )===(       *\n";
-		temp += "          /     \\n";
-		temp += "          |     |\n";
-		temp += "         /       \\n";
-		temp += "         \       /\n";
-		temp += "  _/\_/\_/\__  _/_/\_/\_/\_/\_/\_/\_/\_/\_/\_\n";
+		temp += "          /     \ \n";
+		temp += "          |     | \n";
+		temp += "         /       \ \n";
+		temp += "         \       / \n";
+		temp += "  _/\_/\_/\__  _/_/\_/\_/\_/\_/\_/\_/\_/\_/\_ \n";
 		temp += "  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |\n";
 		temp += "  |  |  |  | ) ) |  |  |  |  |  |  |  |  |  |\n";
 		temp += "  |  |  |  |(_(  |  |  |  |  |  |  |  |  |  |\n";
@@ -39,24 +39,24 @@ std::string ToCat(std::string cat_text)
 		temp += "         X     `-.....-------./ /\n";
 		temp += "          ~-. ~  ~              |\n";
 		temp += "             \             /    |\n";
-		temp += "              \  /_     ___\   /\n";
-		temp += "              | /\ ~~~~~   \ |\n";
-		temp += "              | | \        || |\n";
+		temp += "              \  /_     ___\   / \n";
+		temp += "              | /\ ~~~~~   \ | \n";
+		temp += "              | | \        || | \n";
 		temp += "              | |\ \       || )\n";
-		temp += "             (_/ (_/      ((_/\n";
+		temp += "             (_/ (_/      ((_/ \n";
 	}
 	else if (cat_text == "SleepCat")
 	{
-		temp =  " |\__/,|   (`\\n";
-		temp += " |_ _  |.--.) )\\n";
-		temp += " ( T   )     /\n";
+		temp =  " |\__/,|   (`\ \n";
+		temp += " |_ _  |.--.) )\ \n";
+		temp += " ( T   )     / \n";
 		temp += " (((^_(((/(((_> \n";
 	}
 	else if (cat_text == "SmallCat")
 	{
 		temp =  "      \    /\\n";
 		temp += "       )  ( ')\n";
-		temp += "      (  /  )\n";
+		temp += "      (  /  ) \n";
 		temp += "       \(__)| \n";
 	}
 	else if (cat_text == "LaCaja")
@@ -69,10 +69,10 @@ std::string ToCat(std::string cat_text)
 		temp += "              `.              ,  \ \ /  |\n";
 		temp += "               /`.          ,'-`----Y   |\n";
 		temp += "              (            ;        |   '\n";
-		temp += "              |  ,-.    ,-'         |  /\n";
-		temp += "              |  | (   |            | /\n";
-		temp += "              )  |  \  `.___________|/ \n";
-		temp += "              `--'   `--'\n";
+		temp += "              |  ,-.    ,-'         |  / \n";
+		temp += "              |  | (   |            | / \n";
+		temp += "              )  |  \  `.___________|/  \n";
+		temp += "              `--'   `--' \n";
 	}
 	else
 	{
