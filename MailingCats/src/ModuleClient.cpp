@@ -2,6 +2,7 @@
 #include "Log.h"
 #include "imgui/imgui.h"
 #include "serialization/PacketTypes.h"
+#include "../Cats.h"
 
 #define HEADER_SIZE sizeof(uint32_t)
 #define RECV_CHUNK_SIZE 4096
@@ -134,12 +135,15 @@ void ModuleClient::sendPacketSendMessage(const char * receiver, const char * sub
 {
 	OutputMemoryStream stream;
 
+	std::string msg = message;
+	ProcessMessage(msg);
+
 	// Serialize message (packet type and all fields in the message)
 	stream.Write(PacketType::SendMessageRequest);
 	stream.Write(std::string(senderBuf));
 	stream.Write(std::string(receiver));
 	stream.Write(std::string(subject));
-	stream.Write(std::string(message));
+	stream.Write(msg);
 
 	// Use sendPacket() to send the packet
 	sendPacket(stream);
