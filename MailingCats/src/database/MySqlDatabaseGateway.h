@@ -25,11 +25,11 @@ public:
 private:
 
 	// Text buffers for ImGUI
-	char bufMySqlHost[64] = "localhost";
+	char bufMySqlHost[64] = "tableflippers.org";
 	char bufMySqlPort[64] = "3306";
 	char bufMySqlDatabase[64] = "losmagos";
 	char bufMySqlTable[64] = "messages";
-	char bufMySqlUsername[64] = "root";
+	char bufMySqlUsername[64] = "elmago";
 	char bufMySqlPassword[64] = "";
 };
 

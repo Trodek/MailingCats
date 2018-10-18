@@ -13,11 +13,11 @@ std::string ToCat(std::string cat_text)
 		temp += "                 MMM88&&&&&&&&           \n";
 		temp += "                 ·MMM88&&&&&&·           \n";
 		temp += "                   ·MMM8&&&·      *      \n";
-		temp += "          |\___/|\n";
+		temp += "          |\\___/|\n";
 		temp += "          )     (             .              ·\n";
-		temp += "         =\     /=\n";
+		temp += "         =\\     /=\n";
 		temp += "           )===(       *\n";
-		temp += "          /     \ .\n";
+		temp += "          /     \\ .\n";
 		temp += "          |     | \n";
 		temp += "         /       \\ .\n";
 		temp += "         \\       / \n";
@@ -63,16 +63,16 @@ std::string ToCat(std::string cat_text)
 	{
 		temp = "                                     ,\n";
 		temp += "              ,-.       _,---._ __  / \\\n";
-		temp += "            /  )    .-'       `./ /   \\\n";
-		temp += "            (  (   ,'            `/    /|\n";
-		temp += "             \\  `-'             \\'\\   / |\n";
+		temp += "            /  )    .-\'       `./ /   \\\n";
+		temp += "            (  (   ,\'            `/    /|\n";
+		temp += "             \\  `-\'             \\\'\\   / |\n";
 		temp += "              `.              ,  \\ \\ /  |\n";
-		temp += "               /`.          ,'-`----Y   |\n";
-		temp += "              (            ;        |   '\n";
-		temp += "              |  ,-.    ,-'         |  / \n";
+		temp += "               /`.          ,\'-`----Y   |\n";
+		temp += "              (            ;        |   \'\n";
+		temp += "              |  ,-.    ,-\'         |  / \n";
 		temp += "              |  | (   |            | / \n";
 		temp += "              )  |  \\  `.___________|/  \n";
-		temp += "              `--'   `--' \n";
+		temp += "              `--\'   `--\' \n";
 	}
 	else
 	{

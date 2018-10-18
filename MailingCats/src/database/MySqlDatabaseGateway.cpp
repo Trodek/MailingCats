@@ -44,7 +44,7 @@ void MySqlDatabaseGateway::insertMessage(const Message & message)
 		Escape(msg.senderUsername);
 		Escape(msg.receiverUsername);
 		Escape(msg.subject);
-		Escape(msg.body);
+		//Escape(msg.body);
 
 		std::string sqlStatement;
 		sqlStatement = "INSERT INTO messages(sender, receiver, subject, body) VALUES('" +

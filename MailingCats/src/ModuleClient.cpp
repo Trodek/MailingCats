@@ -3,6 +3,7 @@
 #include "imgui/imgui.h"
 #include "serialization/PacketTypes.h"
 #include "../Cats.h"
+#include "database/MySqlDatabaseGateway.h"
 
 #define HEADER_SIZE sizeof(uint32_t)
 #define RECV_CHUNK_SIZE 4096
