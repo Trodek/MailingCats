@@ -9,6 +9,8 @@ struct Message
 	std::string receiverUsername;
 	std::string subject;
 	std::string body;
+	bool new_msg;
+	bool deleted;
 
 	void Serialize(OutputMemoryStream &stream)
 	{
