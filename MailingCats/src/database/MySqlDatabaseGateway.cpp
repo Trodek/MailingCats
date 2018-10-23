@@ -81,6 +81,8 @@ std::vector<Message> MySqlDatabaseGateway::getAllMessagesReceivedByUser(const st
 			message.receiverUsername = messageRow.columns[2];
 			message.subject = messageRow.columns[3];
 			message.body = messageRow.columns[4];
+			message.new_msg = (messageRow.columns[5] == "TRUE") ? true : false;
+			message.deleted = (messageRow.columns[6] == "TRUE") ? true : false;
 			messages.push_back(message);
 		}
 	}
