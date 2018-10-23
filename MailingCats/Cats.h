@@ -4,31 +4,7 @@
 std::string ToCat(std::string cat_text)
 {
 	std::string temp;
-	if (cat_text == "MoonCat")
-	{
-		temp = "            *      ,MHARRY&.            * \n";
-		temp += "                  MMMSOS&&&&&    .       \n";
-		temp += "                 MMMMUN&&&&&&&           \n";
-		temp += "     *           MMM8GATO&&&&&           \n";
-		temp += "                 MMM88&&&&&&&&           \n";
-		temp += "                 ·MMM88&&&&&&·           \n";
-		temp += "                   ·MMM8&&&·      *      \n";
-		temp += "          |\\___/|\n";
-		temp += "          )     (             .              ·\n";
-		temp += "         =\\     /=\n";
-		temp += "           )===(       *\n";
-		temp += "          /     \\ .\n";
-		temp += "          |     | \n";
-		temp += "         /       \\ .\n";
-		temp += "         \\       / \n";
-		temp += "  _/\\_/\\_/\\__  _/_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_/\\_ \n";
-		temp += "  |  |  |  |( (  |  |  |  |  |  |  |  |  |  |\n";
-		temp += "  |  |  |  | ) ) |  |  |  |  |  |  |  |  |  |\n";
-		temp += "  |  |  |  |(_(  |  |  |  |  |  |  |  |  |  |\n";
-		temp += "  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n";
-		temp += "  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n";
-	}
-	else if (cat_text == "Cat")
+	if (cat_text == "Cat")
 	{
 		temp = "                                 _\n";
 		temp += "                                | \\\n";
@@ -59,21 +35,6 @@ std::string ToCat(std::string cat_text)
 		temp += "      (  /  ) \n";
 		temp += "       \\(__)| \n";
 	}
-	else if (cat_text == "LaCaja")
-	{
-		temp = "                                     ,\n";
-		temp += "              ,-.       _,---._ __  / \\\n";
-		temp += "            /  )    .-\'       `./ /   \\\n";
-		temp += "            (  (   ,\'            `/    /|\n";
-		temp += "             \\  `-\'             \\\'\\   / |\n";
-		temp += "              `.              ,  \\ \\ /  |\n";
-		temp += "               /`.          ,\'-`----Y   |\n";
-		temp += "              (            ;        |   \'\n";
-		temp += "              |  ,-.    ,-\'         |  / \n";
-		temp += "              |  | (   |            | / \n";
-		temp += "              )  |  \\  `.___________|/  \n";
-		temp += "              `--\'   `--\' \n";
-	}
 	else
 	{
 		temp = "HARRY SOS UN GATO";
@@ -93,13 +54,7 @@ void ProcessMessage(std::string& msg)
 		std::string cat = "\n";
 
 		size_t pos;
-		if ((pos = msg.find("[MoonCat]")) != std::string::npos)
-		{
-			cat_found = true;
-			cat += ToCat("MoonCat");
-			msg.replace(msg.begin()+pos, msg.begin()+pos+9, cat);
-		}
-		else if ((pos = msg.find("[Cat]")) != std::string::npos)
+		if ((pos = msg.find("[Cat]")) != std::string::npos)
 		{
 			cat_found = true;
 			cat += ToCat("Cat");
@@ -116,12 +71,6 @@ void ProcessMessage(std::string& msg)
 			cat_found = true;
 			cat += ToCat("SmallCat");
 			msg.replace(msg.begin() + pos, msg.begin() + pos + 10, cat);
-		}
-		else if ((pos = msg.find("[LaCaja]")) != std::string::npos)
-		{
-			cat_found = true;
-			cat += ToCat("LaCaja");
-			msg.replace(msg.begin() + pos, msg.begin() + pos + 8, cat);
 		}
 	}
 }
