@@ -2,6 +2,7 @@
 #include "DBConnection.h"
 #include "../imgui/imgui.h"
 #include <cstdarg>
+#include <string>
 
 // You can use this function to create the SQL statements easily, works like the printf function
 std::string stringFormat(const char *fmt, ...)
@@ -77,18 +78,59 @@ std::vector<Message> MySqlDatabaseGateway::getAllMessagesReceivedByUser(const st
 		for (auto & messageRow : res.rows)
 		{
 			Message message;
+			message.id = atoi(messageRow.columns[0].c_str());
 			message.senderUsername = messageRow.columns[1];
 			message.receiverUsername = messageRow.columns[2];
 			message.subject = messageRow.columns[3];
 			message.body = messageRow.columns[4];
-			message.new_msg = (messageRow.columns[5] == "TRUE") ? true : false;
-			message.deleted = (messageRow.columns[6] == "TRUE") ? true : false;
+			message.new_msg = (messageRow.columns[6] == "1") ? true : false;
+			message.deleted = (messageRow.columns[7] == "1") ? true : false;
 			messages.push_back(message);
 		}
 	}
 
 
 	return messages;
+}
+
+void MySqlDatabaseGateway::MessageOpened(int msg_id)
+{
+	DBConnection db(bufMySqlHost, bufMySqlPort, bufMySqlDatabase, bufMySqlUsername, bufMySqlPassword);
+
+	if (db.isConnected())
+	{
+		std::string sqlStatement;
+		sqlStatement = "UPDATE messages SET new = 0 WHERE message_id = " + std::to_string(msg_id) + ";";
+
+		DBResultSet res = db.sql(sqlStatement.c_str());
+	}
+
+}
+
+void MySqlDatabaseGateway::DeleteMessage(int msg_id)
+{
+	DBConnection db(bufMySqlHost, bufMySqlPort, bufMySqlDatabase, bufMySqlUsername, bufMySqlPassword);
+
+	if (db.isConnected())
+	{
+		std::string sqlStatement;
+		sqlStatement = "UPDATE messages SET deleted = 1 WHERE message_id = " + std::to_string(msg_id) + ";";
+
+		DBResultSet res = db.sql(sqlStatement.c_str());
+	}
+}
+
+void MySqlDatabaseGateway::RemoveMessage(int msg_id)
+{
+	DBConnection db(bufMySqlHost, bufMySqlPort, bufMySqlDatabase, bufMySqlUsername, bufMySqlPassword);
+
+	if (db.isConnected())
+	{
+		std::string sqlStatement;
+		sqlStatement = "DELETE FROM messages WHERE message_id = " + std::to_string(msg_id) + ";";
+
+		DBResultSet res = db.sql(sqlStatement.c_str());
+	}
 }
 
 void MySqlDatabaseGateway::updateGUI()

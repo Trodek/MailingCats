@@ -5,6 +5,7 @@
 
 struct Message
 {
+	int id;
 	std::string senderUsername;
 	std::string receiverUsername;
 	std::string subject;
@@ -14,9 +15,12 @@ struct Message
 
 	void Serialize(OutputMemoryStream &stream)
 	{
+		stream.Write(id);
 		stream.Write(senderUsername);
 		stream.Write(receiverUsername);
 		stream.Write(subject);
 		stream.Write(body);
+		stream.Write(new_msg);
+		stream.Write(deleted);
 	}
 };

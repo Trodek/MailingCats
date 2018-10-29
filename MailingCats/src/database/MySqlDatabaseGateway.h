@@ -20,6 +20,12 @@ public:
 
 	std::vector<Message> getAllMessagesReceivedByUser(const std::string &username) override;
 
+	void MessageOpened(int msg_id) override;
+
+	void DeleteMessage(int msg_id) override;
+
+	void RemoveMessage(int msg_id) override;
+
 	virtual void updateGUI() override;
 
 private:

@@ -31,6 +31,12 @@ private:
 
 	void sendPacketSendMessage(const char *receiver, const char *subject, const char *message);
 
+	void sendPacketMessageOpened(int msg_id);
+
+	void sendPacketDeleteMessage(int msg_id);
+
+	void sendPacketRemoveMessage(int msg_id);
+
 	void sendPacket(const OutputMemoryStream &stream);
 
 	

@@ -20,6 +20,12 @@ public:
 
 	virtual std::vector<Message> getAllMessagesReceivedByUser(const std::string &username) = 0;
 
+	virtual void DeleteMessage(int msg_id) = 0;
+
+	virtual void MessageOpened(int msg_id) = 0;
+
+	virtual void RemoveMessage(int msg_id) = 0;
+
 	virtual void updateGUI() { }
 };
 

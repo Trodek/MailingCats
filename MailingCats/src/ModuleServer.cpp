@@ -76,6 +76,15 @@ void ModuleServer::onPacketReceived(SOCKET socket, const InputMemoryStream & str
 	case PacketType::SendMessageRequest:
 		onPacketReceivedSendMessage(socket, stream);
 		break;
+	case PacketType::SendMessageOpened:
+		onPacketReceivedMessageOpened(socket, stream);
+		break;
+	case PacketType::SendMessageDeleted:
+		onPacketReceivedDeleteMessage(socket, stream);
+		break;
+	case PacketType::SendMessageRemove:
+		onPacketReceivedRemoveMessage(socket, stream);
+		break;
 	default:
 		LOG("Unknown packet type received");
 		break;
@@ -134,6 +143,33 @@ void ModuleServer::onPacketReceivedSendMessage(SOCKET socket, const InputMemoryS
 
 	// Insert the message in the database
 	database()->insertMessage(message);
+}
+
+void ModuleServer::onPacketReceivedMessageOpened(SOCKET socket, const InputMemoryStream & stream)
+{
+	int msg_id;
+
+	stream.Read(msg_id);
+
+	database()->MessageOpened(msg_id);
+}
+
+void ModuleServer::onPacketReceivedDeleteMessage(SOCKET socket, const InputMemoryStream & stream)
+{
+	int msg_id;
+
+	stream.Read(msg_id);
+
+	database()->DeleteMessage(msg_id);
+}
+
+void ModuleServer::onPacketReceivedRemoveMessage(SOCKET socket, const InputMemoryStream & stream)
+{
+	int msg_id;
+
+	stream.Read(msg_id);
+
+	database()->RemoveMessage(msg_id);
 }
 
 void ModuleServer::sendPacket(SOCKET socket, OutputMemoryStream & stream)

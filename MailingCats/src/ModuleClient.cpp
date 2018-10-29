@@ -94,10 +94,13 @@ void ModuleClient::onPacketReceivedQueryAllMessagesResponse(const InputMemoryStr
 	//Deserialize messages one by one and push_back them into the messages vector
 	for (uint32_t m = 0; m < messageCount; ++m) {
 		Message msg;
+		stream.Read(msg.id);
 		stream.Read(msg.senderUsername);
 		stream.Read(msg.receiverUsername);
 		stream.Read(msg.subject);
 		stream.Read(msg.body);
+		stream.Read(msg.new_msg);
+		stream.Read(msg.deleted);
 		messages.push_back(msg);
 	}
 
@@ -152,6 +155,42 @@ void ModuleClient::sendPacketSendMessage(const char * receiver, const char * sub
 	messengerState = MessengerState::RequestingMessages;
 }
 
+void ModuleClient::sendPacketMessageOpened(int msg_id)
+{
+	OutputMemoryStream stream;
+
+	stream.Write(PacketType::SendMessageOpened);
+	stream.Write(msg_id);
+
+	sendPacket(stream);
+
+	messengerState = MessengerState::RequestingMessages;
+}
+
+void ModuleClient::sendPacketDeleteMessage(int msg_id)
+{
+	OutputMemoryStream stream;
+
+	stream.Write(PacketType::SendMessageDeleted);
+	stream.Write(msg_id);
+
+	sendPacket(stream);
+
+	messengerState = MessengerState::RequestingMessages;
+}
+
+void ModuleClient::sendPacketRemoveMessage(int msg_id)
+{
+	OutputMemoryStream stream;
+
+	stream.Write(PacketType::SendMessageRemove);
+	stream.Write(msg_id);
+
+	sendPacket(stream);
+
+	messengerState = MessengerState::RequestingMessages;
+}
+
 // This function is done for you: Takes the stream and schedules its internal buffer to be sent
 void ModuleClient::sendPacket(const OutputMemoryStream & stream)
 {
@@ -163,7 +202,6 @@ void ModuleClient::sendPacket(const OutputMemoryStream & stream)
 	//std::copy(stream.GetBufferPtr(), stream.GetBufferPtr() + stream.GetSize(), &sendBuffer[oldSize] + HEADER_SIZE);
 	memcpy(&sendBuffer[oldSize] + HEADER_SIZE, stream.GetBufferPtr(), stream.GetSize());
 }
-
 
 // GUI: Modify this to add extra features...
 
@@ -235,21 +273,64 @@ void ModuleClient::updateGUI()
 
 			ImGui::Text("Inbox:");
 
-			if (messages.empty()) {
-				ImGui::Text(" - Your inbox is empty.");
-			}
-
 			int i = 0;
 			for (auto &message : messages)
 			{
+				if (message.deleted) continue;
+
 				ImGui::PushID(i++);
+				if (message.new_msg)
+					ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0, 1.f, 0, 1.f));
+				if (ImGui::TreeNode(&message, "%s - %s", message.senderUsername.c_str(), message.subject.c_str()))
+				{
+					ImGui::TextWrapped("%s", message.body.c_str());
+					if (message.new_msg)
+					{
+						sendPacketMessageOpened(message.id);
+					}
+					ImGui::TreePop();
+				}
+				if (message.new_msg)
+					ImGui::PopStyleColor();
+				ImGui::SameLine();
+				std::string button_name = "Delete##" + std::to_string(i);
+				if (ImGui::Button(button_name.c_str()))
+				{
+					sendPacketDeleteMessage(message.id);
+				}
+				ImGui::PopID();
+			}
+			if (i == 0) 
+			{
+				ImGui::Text(" - Your inbox is empty.");
+			}
+
+			ImGui::Text("Bin:");
+
+			int j = 0;
+			for (auto &message : messages)
+			{
+				if (!message.deleted) continue;
+
+				ImGui::PushID(j++);
 				if (ImGui::TreeNode(&message, "%s - %s", message.senderUsername.c_str(), message.subject.c_str()))
 				{
 					ImGui::TextWrapped("%s", message.body.c_str());
 					ImGui::TreePop();
 				}
+				ImGui::SameLine();
+				std::string button_name = "Remove##" + std::to_string(j);
+				if (ImGui::Button(button_name.c_str()))
+				{
+					sendPacketRemoveMessage(message.id);
+				}
 				ImGui::PopID();
 			}
+			if (j == 0)
+			{
+				ImGui::Text(" - Your bin is empty.");
+			}
+
 		}
 		else if (messengerState == MessengerState::ReceivingMessages) 
 		{

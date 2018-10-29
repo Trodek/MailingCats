@@ -36,6 +36,12 @@ private:
 	
 	void onPacketReceivedSendMessage(SOCKET socket, const InputMemoryStream& stream);
 
+	void onPacketReceivedMessageOpened(SOCKET socket, const InputMemoryStream& stream);
+
+	void onPacketReceivedDeleteMessage(SOCKET socket, const InputMemoryStream& stream);
+
+	void onPacketReceivedRemoveMessage(SOCKET socket, const InputMemoryStream& stream);
+
 	void sendPacketQueryAllMessagesResponse(SOCKET socket, const std::string &username);
 
 	void sendPacket(SOCKET socket, OutputMemoryStream& stream);
